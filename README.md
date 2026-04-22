@@ -10,7 +10,7 @@
 > Exponential Family를 쓰는 것과, canonical parameter와 expectation parameter가 Legendre 쌍대이고, 이 쌍대성이 e-connection과 m-connection의 쌍대평탄 구조를 낳는다는 것을 증명할 수 있는 것은 다르다."*
 
 확률분포 공간의 기하학부터 Fisher-Rao 리만 계량, ±1-연결의 쌍대평탄성, 일반화 Pythagoras 정리까지  
-**"왜 분포 공간은 평평하지 않은가"** 라는 질문으로 Natural Gradient·TRPO·VAE·Mirror Descent의 수학적 기반을 끝까지 파헤칩니다
+**"왜 분포 공간은 평평하지 않은가"** 라는 질문으로 Natural Gradient·TRPO·VAE·Mirror Descent·RMHMC·Diffusion의 수학적 기반을 끝까지 파헤칩니다
 
 <br/>
 
@@ -70,7 +70,7 @@
 [![Ch4](https://img.shields.io/badge/🔹_Ch4-Exponential_Family와_쌍대평탄성-4A90D9?style=for-the-badge)](./ch4-exponential-duality/01-exponential-family-geometry.md)
 [![Ch5](https://img.shields.io/badge/🔹_Ch5-Natural_Gradient_유도-4A90D9?style=for-the-badge)](./ch5-natural-gradient/01-euclidean-gradient-problem.md)
 [![Ch6](https://img.shields.io/badge/🔹_Ch6-Information_Projection-4A90D9?style=for-the-badge)](./ch6-info-projection/01-e-m-projection.md)
-[![Ch7](https://img.shields.io/badge/🔹_Ch7-NPG·TRPO·VAE·RMHMC-4A90D9?style=for-the-badge)](./ch7-ai-applications/01-natural-policy-gradient.md)
+[![Ch7](https://img.shields.io/badge/🔹_Ch7-NPG·MD·VAE·RMHMC·Diffusion-4A90D9?style=for-the-badge)](./ch7-ai-applications/01-natural-policy-gradient.md)
 
 ---
 
@@ -198,7 +198,7 @@
 |------|--------------|
 | [01. e-projection과 m-projection](./ch6-info-projection/01-e-m-projection.md) | $D(p \| q)$ 최소화를 $p$에 대해(m-projection) vs $q$에 대해(e-projection), **두 projection의 기하학적 차이** — e-geodesic vs m-geodesic, **일반화 Pythagoras로 projection 유일성 증명** |
 | [02. EM 알고리즘의 Information Geometry](./ch6-info-projection/02-em-algorithm-geometry.md) | E-step = m-projection, M-step = e-projection임을 증명, **두 projection의 교대가 KL 감소를 보장**하는 단조 수렴성 증명, Jensen 부등식 기반 ELBO 유도와의 동치성 |
-| [03. Variational Inference의 기하학](./ch6-info-projection/03-variational-inference.md) | ELBO 최대화 = 역방향 KL $\text{KL}(q \| p)$ 최소화, **Mean-field family $q(\theta) = \prod_i q_i(\theta_i)$가 쌍대평탄 부분다양체**임을 보임, 왜 VI가 사후분포의 mode를 잡는지(mode-seeking vs mean-seeking) |
+| [03. Variational Inference의 기하학](./ch6-info-projection/03-variational-inference.md) | ELBO 최대화 = 역방향 KL $\text{KL}(q \| p)$ 최소화 = 사후분포의 **m-projection** onto $\mathcal{Q}$, **Mean-field family $q(\theta) = \prod_i q_i(\theta_i)$가 e-flat 부분다양체**임을 증명, 왜 VI가 사후분포의 mode를 잡는지(mode-seeking vs mean-seeking) |
 | [04. Maximum Entropy Principle과 정보기하](./ch6-info-projection/04-maxent-principle.md) | 제약 $\mathbb{E}[T_i] = \mu_i$ 하의 최대 엔트로피 분포는 exponential family임을 라그랑주 승수법으로 증명, 이것이 **m-projection onto e-flat submanifold**임을 Amari의 관점으로 재해석 |
 | [05. Mixture Model과 Information Projection](./ch6-info-projection/05-mixture-projection.md) | GMM의 EM이 $q(z\|x) \to p(z\|x, \theta)$ (m-proj)과 $\theta \to \arg\max \mathbb{E}_q[\log p(x, z\|\theta)]$ (e-proj) 쌍대 projection 쌍으로 해석, **generalized Pythagoras로 수렴 속도 분석** |
 
@@ -219,7 +219,7 @@
 |------|--------------|
 | [01. Policy Gradient와 Natural Policy Gradient](./ch7-ai-applications/01-natural-policy-gradient.md) | REINFORCE의 유클리드 gradient vs Kakade(2001) NPG의 Fisher-Rao gradient, **TRPO의 KL 제약 $\mathbb{E}[\text{KL}(\pi_{\text{old}} \| \pi_\theta)] \leq \delta$가 NPG 스텝 크기를 결정**하는 수학적 유도, PPO의 clip 목적함수가 TRPO의 first-order 근사 |
 | [02. Mirror Descent와 쌍대공간 최적화](./ch7-ai-applications/02-mirror-descent.md) | Mirror descent $\theta_{k+1} = \arg\min \langle g, \theta \rangle + \frac{1}{\eta} B_\phi(\theta, \theta_k)$ 유도, **exponential family에서 $\phi = \psi$(cumulant)면 natural gradient와 동치**임을 증명, Exponentiated Gradient의 simplex 기하 |
-| [03. VAE의 Information Geometry 해석](./ch7-ai-applications/03-vae-geometry.md) | Encoder $q_\phi(z\|x)$와 decoder $p_\theta(x\|z)$의 KL 기반 학습, **ELBO = $-\text{KL}(q_\phi \| p_\theta) + \log p(x)$**이 m-projection임을 보임, rate-distortion 관점에서의 β-VAE, posterior collapse의 기하학적 해석 |
+| [03. VAE의 Information Geometry 해석](./ch7-ai-applications/03-vae-geometry.md) | Encoder $q_\phi(z\|x)$와 decoder $p_\theta(x\|z)$의 KL 기반 학습, **ELBO 최대화 ⟺ $\log p(x) - \text{KL}(q_\phi(z\|x) \| p(z\|x, \theta))$**이 진 사후분포로의 **m-projection**임을 증명, rate-distortion 관점에서의 β-VAE, posterior collapse의 기하학적 해석, Reparameterization trick의 수학적 기반 |
 | [04. Riemannian Manifold HMC](./ch7-ai-applications/04-riemannian-hmc.md) | Girolami & Calderhead(2011)의 RMHMC — **Fisher 행렬을 mass matrix로 사용**, 비등방(anisotropic) 사후분포에서 혼합 시간(mixing time) 개선 이론, 계량 텐서가 변화하는 심플렉틱 적분의 유도 |
 | [05. Diffusion Model에서의 Fisher 정보](./ch7-ai-applications/05-diffusion-fisher.md) | Score function $\nabla \log p_t$와 Fisher 정보의 관계, **Fisher divergence $\mathbb{E}[\|\nabla \log p - \nabla \log q\|^2]$가 DSM(Denoising Score Matching) 손실과 근본적으로 동치**임을 증명, Score-based Generative Model의 기하학적 기반 |
 
@@ -321,21 +321,21 @@ plt.show()
 
 ## 📖 각 문서 구성 방식
 
-모든 문서는 동일한 구조로 작성됩니다.
+모든 문서는 **동일한 11-섹션 골격**으로 작성됩니다. 다만 Chapter 1~4 + Ch5-01은 **이모지 스타일**(원문의 감성적 소제목), Chapter 5-02~05 + Ch6 + Ch7는 **숫자 스타일**(교재식 번호 체계)을 사용합니다. 두 형식은 다음 표처럼 1:1 대응됩니다.
 
-| 섹션 | 설명 |
-|------|------|
-| 🎯 **핵심 질문** | 이 문서를 읽고 나면 답할 수 있는 질문 |
-| 🔍 **왜 이 기하학이 AI에서 중요한가** | NPG, TRPO, VAE, Mirror Descent, RMHMC와의 연결 |
-| 📐 **수학적 선행 조건** | Probability, Stats, LA, Calc, Convex 레포 참조 링크 |
-| 📖 **직관적 이해** | "분포 공간이 평평하지 않다"는 핵심 직관 + 그림 |
-| ✏️ **엄밀한 정의** | 다양체·연결·divergence의 정형적 정의 |
-| 🔬 **정리와 증명** | Fisher 3정의 동치성, 쌍대평탄성, 일반화 Pythagoras — "자명하다" 생략 없음 |
-| 💻 **NumPy / SymPy 구현 검증** | Fisher 계량 symbolic 계산, Legendre 쌍대 수치 확인, NGD 수렴 궤적 |
-| 🔗 **AI/ML 연결** | NPG, TRPO, Mirror Descent, VAE, RMHMC, Diffusion |
-| ⚖️ **가정과 한계** | Exponential family 아니면? Fisher가 특이(singular)하면? |
-| 📌 **핵심 정리** | 한 화면 요약 |
-| 🤔 **생각해볼 문제** | 개념 심화 질문 + 해설 |
+| # | 이모지 스타일 (Ch1~4, Ch5-01) | 숫자 스타일 (Ch5-02~Ch7) | 설명 |
+|:-:|--------------------------------|---------------------------|------|
+| 1 | 🎯 **핵심 질문** + 🔍 **왜 이 기하학이 AI에서 중요한가** | **1. 왜 이 주제인가?** | 이 문서를 왜 읽어야 하는가 — NPG, TRPO, VAE, Mirror Descent, RMHMC, Diffusion과의 연결점 |
+| 2 | *(문서 도입부에 흡수)* | **2. 학습 목표** | 읽고 나면 할 수 있어야 하는 5가지 능력 |
+| 3 | 📐 **수학적 선행 조건** | **3. 전제 지식** | Probability, Stats, LA, Calc, Convex 레포 및 선행 문서 링크 |
+| 4 | 📖 **직관적 이해** | **4. 직관적 설명** | "분포 공간이 평평하지 않다"는 핵심 직관 + 그림/비유 |
+| 5 | ✏️ **엄밀한 정의** | **5. 엄밀한 정의와 정리** | 다양체·연결·divergence의 정형적 정의와 명제 |
+| 6 | 🔬 **정리와 증명** | **6. 증명** | Fisher 3정의 동치, 쌍대평탄성, Pythagoras — "자명하다" 생략 없음 |
+| 7 | *(증명·검증 절에 흡수)* | **7. 구체 예제** | 정규·이항·지수족의 손 계산, RL 환경 실험, VAE 손실 검증 |
+| 8 | 💻 **NumPy / SymPy 구현 검증** | **8. Python 코드 검증** | Fisher 계량 심볼릭 계산, Legendre 쌍대 수치 확인, NGD 궤적 |
+| 9 | 🔗 **AI/ML 연결** | **9. AI/ML 연결** | NPG, TRPO, Mirror Descent, VAE, RMHMC, Diffusion |
+| 10 | ⚖️ **가정과 한계** | **10. 흔한 오해와 함정** | Exp family 아니면? Fisher가 특이하면? 빈번한 실수 |
+| 11 | 📌 **핵심 정리** + 🤔 **생각해볼 문제** | **11. 연습문제 및 다음 단계** | 요약 + 심화 문제 + 후속 연결 |
 
 ---
 
@@ -354,6 +354,7 @@ Day 3  Ch5-01  Euclidean gradient의 parameterization 의존성
        Ch5-02  Natural Gradient의 제약 최적화 유도
 Day 4  Ch5-03  Natural Gradient = KL steepest descent
        Ch5-04  Parameterization 불변성 증명
+       Ch5-05  K-FAC·Shampoo — 실전 구현 관점
 ```
 
 </details>
@@ -424,7 +425,8 @@ Day 7  Ch7-02  Mirror Descent, Exponentiated Gradient (bandit/RL 연결)
 | [mathematical-statistics-deep-dive](https://github.com/iq-ai-lab/mathematical-statistics-deep-dive) | Fisher 정보, Exponential Family, MLE 점근 | Ch2 전체(Fisher 계량 기반), Ch4 전체(Exp family 심화) |
 | [linear-algebra-deep-dive](https://github.com/iq-ai-lab/linear-algebra-deep-dive) | 양정치 행렬, 내적 공간, Spectral Theorem | Ch1-03(계량 양정치성), Ch2-05(Cramér-Rao), Ch5-05(K-FAC Kronecker) |
 | [calculus-optimization-deep-dive](https://github.com/iq-ai-lab/calculus-optimization-deep-dive) | 헤시안, 테일러 전개, Legendre 변환 | Ch2-02(헤시안 = -Fisher), Ch3-02(Taylor 2차 근사), Ch4-03(Legendre) |
-| [convex-optimization-deep-dive](https://github.com/iq-ai-lab/convex-optimization-deep-dive) | 쌍대이론, Bregman divergence, Mirror Descent | Ch3-03(Bregman), Ch4-05(쌍대평탄성), Ch7-02(Mirror Descent 완전 전개) |
+| [convex-optimization-deep-dive](https://github.com/iq-ai-lab/convex-optimization-deep-dive) | 쌍대이론, Bregman divergence, Mirror Descent | Ch3-03(Bregman), Ch4-05(쌍대평탄성), Ch6-04(MaxEnt 라그랑지안), Ch7-02(Mirror Descent 완전 전개) |
+| [reinforcement-learning-deep-dive](https://github.com/iq-ai-lab/reinforcement-learning-deep-dive) | MDP, Policy Gradient, TRPO/PPO | Ch7-01(NPG·TRPO), Ch7-02(EG/bandit), Ch6-02(EM의 RLHF 해석) |
 
 > 💡 이 레포는 **확률분포 공간의 기하학**에 집중합니다. Fisher 정보를 Math Stat에서, 헤시안·Legendre를 Calc에서 학습한 후 오면 연결이 훨씬 깊어집니다. Chapter 1~3은 수학 레포로도 학습 가능하지만, Chapter 5~7은 딥러닝/RL 기초(SGD, Policy Gradient, VAE 사용 경험)가 있을 때 최대의 효과를 냅니다.
 
@@ -432,17 +434,39 @@ Day 7  Ch7-02  Mirror Descent, Exponentiated Gradient (bandit/RL 연결)
 
 ## 📖 Reference
 
+### 🏛️ 정보기하 바이블·원전
 - **Information Geometry and Its Applications** (Amari, 2016) — 표준 바이블, α-connection과 쌍대평탄성의 체계적 전개
 - **Methods of Information Geometry** (Amari & Nagaoka, 2000) — 고전 원전, 정보기하의 수학적 기반
 - **Natural Gradient Works Efficiently in Learning** (Amari, 1998) — NGD 원전, Fisher-Rao steepest descent
 - **Information Geometry** (Ay, Jost, Lê, Schwachhöfer, 2017) — 현대적 엄밀한 접근, 무한차원 통계다양체
 - **Differential Geometry of Curved Exponential Families — Curvatures and Information Loss** (Amari, 1982) — α-connection의 원전
+- **I-Divergence Geometry of Probability Distributions and Minimization Problems** (Csiszár, 1975) — I-projection 유일성, MaxEnt의 기하 기반
+- **Information Geometry of the EM and EM Algorithms for Neural Networks** (Csiszár & Tusnády, 1984) — EM = m-proj + e-proj의 원전
+
+### 🚀 Natural Gradient·최적화
 - **Clustering with Bregman Divergences** (Banerjee et al., 2005) — Bregman의 ML 응용과 exp family 이중성
+- **Problem Complexity and Method Efficiency in Optimization** (Nemirovski & Yudin, 1983) — Mirror Descent 원전
+- **Optimizing Neural Networks with Kronecker-factored Approximate Curvature** (Martens & Grosse, 2015) — K-FAC
+- **Scalable Second Order Optimization for Deep Learning** (Gupta et al., 2018) — Shampoo
+- **Limitations of the Empirical Fisher Approximation** (Kunstner et al., 2019) — 경험적 vs 참 Fisher의 위험
+
+### 🎮 강화학습에의 적용
 - **A Natural Policy Gradient** (Kakade, 2001) — RL에 NGD를 적용한 원전
 - **Trust Region Policy Optimization** (Schulman et al., 2015) — TRPO, NPG의 실전적 근사
+- **Proximal Policy Optimization Algorithms** (Schulman et al., 2017) — PPO = TRPO의 1-차 근사
+
+### 🎲 MCMC·변분 추론
 - **Riemann Manifold Langevin and Hamiltonian Monte Carlo Methods** (Girolami & Calderhead, 2011) — RMHMC
-- **Optimizing Neural Networks with Kronecker-factored Approximate Curvature** (Martens & Grosse, 2015) — K-FAC
-- **Generative Modeling by Estimating Gradients of the Data Distribution** (Song & Ermon, 2019) — Score-based diffusion과 Fisher divergence
+- **A General Metric for Riemannian Manifold HMC** (Betancourt, 2013) — SoftAbs 계량
+- **The Variational Formulation of the Fokker-Planck Equation** (Jordan, Kinderlehrer & Otto, 1998) — JKO, Wasserstein gradient flow
+
+### 🎨 생성 모델
+- **Auto-Encoding Variational Bayes** (Kingma & Welling, 2014) — VAE 원전, Reparameterization trick
+- **A Connection Between Score Matching and Denoising Autoencoders** (Vincent, 2011) — DSM 이론
+- **Denoising Diffusion Probabilistic Models** (Ho et al., 2020) — DDPM
+- **Score-Based Generative Modeling through Stochastic Differential Equations** (Song et al., 2021) — Score SDE, Anderson reverse SDE 적용
+- **Flow Matching for Generative Modeling** (Lipman et al., 2023) — Flow Matching, 연속 정규화 흐름의 m-geodesic 관점
+- **Reverse-Time Diffusion Equation Models** (Anderson, 1982) — Reverse SDE 수학 기반
 
 ---
 
