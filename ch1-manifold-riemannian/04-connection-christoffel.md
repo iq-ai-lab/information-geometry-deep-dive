@@ -419,8 +419,8 @@ Exponential map은 측지선 ODE $\ddot\gamma^k + \Gamma^k_{ij}\dot\gamma^i \dot
 
 <div align="center">
 
-| | |
-|---|---|
+| | | |
+| :---: | :---: | :---: |
 | [◀ 03. 리만 계량과 거리](./03-riemannian-metric.md) | [📚 README로 돌아가기](../README.md) | [Ch2-01. 통계다양체의 정의 ▶](../ch2-statistical-fisher/01-statistical-manifold.md) |
 
 </div>

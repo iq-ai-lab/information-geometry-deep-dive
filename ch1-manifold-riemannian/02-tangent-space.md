@@ -356,8 +356,8 @@ $\partial \log p_\theta(y=k)/\partial \theta_j = \delta_{jk} - p_\theta(y=j)$. C
 
 <div align="center">
 
-| | |
-|---|---|
+| | | |
+| :---: | :---: | :---: |
 | [◀ 01. 다양체의 기초](./01-manifold-basics.md) | [📚 README로 돌아가기](../README.md) | [03. 리만 계량과 거리 ▶](./03-riemannian-metric.md) |
 
 </div>
