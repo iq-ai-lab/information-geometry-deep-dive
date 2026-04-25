@@ -2,15 +2,33 @@
 
 # 📐 Information Geometry Deep Dive
 
-**"Natural Gradient에 `F⁻¹`을 곱하는 것과, 그것이 KL 구면에서의 최대 감소 방향임을 증명할 수 있는 것은 다르다"**
+### Natural Gradient 에
+
+$$\tilde\nabla L = F^{-1} \nabla L$$
+
+### 의 **Fisher inverse** 를 곱하는 것과, 그것이 **KL 구면에서의 최대 감소 방향** 임을 증명할 수 있는 것은 **다르다.**
 
 <br/>
 
-> *"Fisher 정보 행렬을 `F = -𝔼[∂² log p]`로 외우는 것과 — 스코어 공분산·로그우도 헤시안·KL의 2차 근사, 세 정의가 같은 대상임을 증명할 수 있는 것은 다르다.  
-> Exponential Family를 쓰는 것과, canonical parameter와 expectation parameter가 Legendre 쌍대이고, 이 쌍대성이 e-connection과 m-connection의 쌍대평탄 구조를 낳는다는 것을 증명할 수 있는 것은 다르다."*
+> *Fisher 정보 행렬을*
+>
+> $$F = -\mathbb{E}\bigl[\partial^2 \log p\bigr]$$
+>
+> *로 **외우는 것** 과, **스코어 공분산 · 로그우도 헤시안 · KL 의 2차 근사** — 세 정의가 같은 대상임을 증명할 수 있는 것은 다르다.*
+>
+> *Exponential Family 를 **쓰는 것** 과, **canonical parameter 와 expectation parameter 가 Legendre 쌍대** 이고, 이 쌍대성이 **e-connection 과 m-connection 의 쌍대평탄 구조** 를 낳는다는 것을 증명할 수 있는 것은 다르다.*
 
-확률분포 공간의 기하학부터 Fisher-Rao 리만 계량, ±1-연결의 쌍대평탄성, 일반화 Pythagoras 정리까지  
-**"왜 분포 공간은 평평하지 않은가"** 라는 질문으로 Natural Gradient·TRPO·VAE·Mirror Descent·RMHMC·Diffusion의 수학적 기반을 끝까지 파헤칩니다
+<br/>
+
+**다루는 정리 (시간순)**
+
+Fisher 1925 *Fisher 정보* · Rao 1945 *Cramér–Rao bound + Fisher–Rao 계량* · Chentsov 1972 *Fisher 가 유일한 invariant metric* · Amari 1982 *±1-connections + 쌍대평탄* · Amari 1985 *Information Geometry* · Amari 1998 *Natural Gradient* · Kakade 2001 *Natural Policy Gradient* · Schulman 2015 *TRPO* · Martens 2015 *K-FAC*
+
+<br/>
+
+**핵심 질문**
+
+> **왜 분포 공간은 평평하지 않은가** — 확률분포 공간의 기하학 · Fisher–Rao 리만 계량 · ±1-연결의 쌍대평탄성 · 일반화 Pythagoras 정리 까지, Natural Gradient · TRPO · VAE · Mirror Descent · RMHMC · Diffusion 의 수학적 기반을 끝까지 파헤칩니다.
 
 <br/>
 
